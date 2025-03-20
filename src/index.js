@@ -11,6 +11,7 @@ app.get("/", (req, res) => {
 app.get("/auth/:secret", (req, res) => {
   const { secret } = req.params;
   const response = auth(secret);
+  console.log("Test hook");
 
   res.status(response.status).send(response.message);
 });
