@@ -1,19 +1,16 @@
-name: CI Pipeline
+name: Release Pipeline
 
 on:
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
+  workflow_dispatch:
 
 jobs:
-  validate-and-test:
+  release:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Set up pnpm
         uses: pnpm/action-setup@v4
@@ -30,8 +27,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Run lint
-        run: pnpm run lint
-
-      - name: Run tests
-        run: pnpm test
+      - name: Run release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: pnpm release
