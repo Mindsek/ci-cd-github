@@ -3,6 +3,11 @@ name: Release Pipeline
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write # Permission pour écrire (pousser des commits et tags)
+  pull-requests: write # Permission pour interagir avec les pull requests (optionnel ici)
+  issues: write # Permission pour interagir avec les issues (optionnel ici)
+
 jobs:
   release:
     runs-on: ubuntu-latest
