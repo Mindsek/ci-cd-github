@@ -7,7 +7,8 @@
     "start": "node src/index.js",
     "test": "vitest run",
     "lint": "eslint src --max-warnings=0",
-    "prepare": "husky"
+    "prepare": "husky",
+    "release": "release-it --ci"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +21,16 @@
     "eslint": "^9.22.0",
     "globals": "^16.0.0",
     "husky": "^9.1.7",
+    "release-it": "^18.1.2",
     "vitest": "^3.0.9"
+  },
+  "release-it": {
+    "$schema": "https://unpkg.com/release-it/schema/release-it.json",
+    "github": {
+      "release": true
+    },
+    "git": {
+      "commitMessage": "chore: release v${version}"
+    }
   }
 }

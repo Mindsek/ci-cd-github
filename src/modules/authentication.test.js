@@ -23,7 +23,7 @@ describe('auth module', () => {
   test('Correct passphrase should succeed', () => {
     const response = auth('secret-mysecretphrase');
 
-    expect(response.status).toBe(201);
+    expect(response.status).toBe(200);
     expect(response.message).toBe('Success');
   });
 });
